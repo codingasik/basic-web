@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Belajar Frontend</title>
+  
+  <style>
+    *{
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+    .title{
+      text-align: center; 
+      background: #eaeaea;
+      padding: 1rem;
+    }
+    #content{
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    .card{
+      width: 100%;
+      padding: 1rem;
+      box-shadow: .125rem .125rem .125rem #00000025;
+      border-radius: 1rem;
+      display: flex;
+      gap:1rem;
+      justify-content: left;
+      align-items: center;
+    }
+    .card img{
+      width :50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+    .card .text{
+      padding: .5rem;
+    }
+    .text h4{
+      margin-bottom: 1rem;
+    }
+    
+  </style>
+</head>
+<body>
+  <h2 class="title">Card List</h2>
+  <div id="content"></div>
+  <script>
+    const content = document.getElementById('content');
+    
+    const data = fetch('https://reqres.in/api/users').then(data=>data.json()).then(res=>{
+      let html = '';
+      for(let i =0; i<res.data.length;i++){
+        html += `
+          <div class="card">
+            <img src="${res.data[i].avatar}">
+            <div class="text">
+              <h4>
+                ${res.data[i].first_name} ${res.data[i].last_name}
+              </h4>
+              <p>${res.data[i].email}</p>
+            </div>
+            
+          </div>
+        `;
+        
+        content.innerHTML = html;
+      }
+      console.log(res.data);
+    })
+  </script>
+</body>
+</html>
