@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Counter App</title>
+  
+  <style>
+    h1{
+      text-align: center;
+      margin-top: 10rem;
+    }
+    .container{
+      margin-top: 1rem;
+      gap: 1rem;
+      width: 100%;
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+    button{
+      width: 2rem;
+      height: 2rem;
+    }
+    .container,button{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  
+  <h1>Counter App</h1>
+  <div class="container">
+    <button onclick="min()">-</button>
+    <p id="display">0</p>
+    <button onclick="add()">+</button>
+  </div>
+  
+  <script>
+    let value = 0;
+    const display = document.getElementById('display');
+    
+    function min(){
+      value += -1;
+      display.innerText = value;
+    }
+    
+    function add(){
+      value += +1;
+      display.innerText = value;
+    }
+  </script>
+  
+</body>
+</html>
